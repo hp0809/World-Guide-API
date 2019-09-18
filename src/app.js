@@ -7,6 +7,7 @@ const { NODE_ENV } = require('./config');
 const usersRouter = require('./users/users-router');
 const countriesRouter = require('./countries/countries-router');
 const languageRouter = require('./language/language-router');
+const placesRouter = require('./places/places-router');
 const authRouter = require('./auth/auth-router');
 
 const app = express();
@@ -22,6 +23,7 @@ app.use(cors());
 app.use('/world-guide/api/users', usersRouter)
 app.use('/world-guide/api/country', countriesRouter)
 app.use('/world-guide/api/language', languageRouter)
+app.use('/world-guide/api/places', placesRouter)
 app.use('/world-guide/api/auth', authRouter)
 
 app.get('/', (req, res) => {
