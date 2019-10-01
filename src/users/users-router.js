@@ -18,7 +18,7 @@ usersRouter
     const passwordError = UsersService.validatePassword(password)
 
     if (passwordError)
-      return res.status(400).json({ error: passwordError })
+      return res.status(400).json({ error: {message: passwordError} })
 
     UsersService.hasUserWithUserName(
       req.app.get('db'),
@@ -26,7 +26,7 @@ usersRouter
     )
       .then(hasUserWithUserName => {
         if (hasUserWithUserName)
-          return res.status(400).json({ error: `Username already taken` })
+          return res.status(400).json({ error: { message:`Username already taken`} })
 
         return UsersService.hashPassword(password)
           .then(hashedPassword => {
